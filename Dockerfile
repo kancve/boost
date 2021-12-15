@@ -28,12 +28,13 @@ RUN cd /opt && \
 
 # install boost source
 RUN cd /opt && \
-    BOOST_NAME=boost_$(echo $BOOST_VERSION | sed "s?\.?_?g").tar.gz && \
-    wget https://boostorg.jfrog.io/artifactory/main/release/${BOOST_VERSION}/source/${BOOST_NAME} && \
-    tar -zxvf ${BOOST_NAME} && \
-    rm ${BOOST_NAME}
+    BOOST_NAME=boost_$(echo $BOOST_VERSION | sed "s?\.?_?g") && \
+    wget https://boostorg.jfrog.io/artifactory/main/release/${BOOST_VERSION}/source/${BOOST_NAME}.tar.gz && \
+    tar -zxvf ${BOOST_NAME}.tar.gz && \
+    rm ${BOOST_NAME}.tar.gz && \
+    mv ${BOOST_NAME} boost_${BOOST_VERSION}
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 MAVEN_HOME=/opt/apache-maven-${MAVEN_VERSION} BOOST_ROOT=/opt/boost_$(echo $BOOST_VERSION | sed "s?\.?_?g")
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 MAVEN_HOME=/opt/apache-maven-${MAVEN_VERSION} BOOST_ROOT=/opt/boost_${BOOST_VERSION}
 ENV PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 
 # turn on ssh service
