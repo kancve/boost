@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
     iputils-ping \
     openjdk-8-jdk-headless
 
-ARG MAVEN_VERSION=3.6.3 BOOST_VERSION=1.78.0
+ARG MAVEN_VERSION=3.6.3
+ARG BOOST_VERSION=1.78.0
 
 # install maven
 RUN cd /opt && \
