@@ -34,7 +34,7 @@ RUN cd /opt && \
     rm ${BOOST_NAME}.tar.gz && \
     mv ${BOOST_NAME} boost_${BOOST_VERSION}
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 MAVEN_HOME=/opt/apache-maven-${MAVEN_VERSION} BOOST_ROOT=/opt/boost_${BOOST_VERSION}
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 MAVEN_HOME=/opt/apache-maven-${MAVEN_VERSION} BOOST_ROOT=/opt/boost_${BOOST_VERSION} LANG=C.UTF-8
 ENV PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 
 # turn on ssh service
